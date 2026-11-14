@@ -11,9 +11,15 @@ The project is organized into two main parts:
 
 ## Machine learning (`ml/`)
 
-> **Documentation placeholder — to be completed by the ML contributor.**
->
-> Describe the datasets, model architectures, training and update-generation workflow, dependencies, and commands for reproducing the ML experiments here. See `ml/README.md` when available.
+The `ml/` directory contains training code for weight binning, random masking, and stateless pruning, plus scripts that evaluate version skipping at the 5% update budget using native INT8 inference.
+
+Run the evaluation scripts with `--data-dir training/data`.
+This directory should contain the saved INT8 baseline, the test images, and the exported checkpoints with their matching CSV masks.
+
+`ml/model_training/` trains MobileNetV2 and saves model updates and parameter masks for weight binning, random masking, and stateless pruning.
+
+`ml/version_skip/` uses exported checkpoints and masks to reconstruct different update paths at the 5% budget and measures test accuracy and macro-F1 with native INT8 inference.
+The evaluation scripts expect the saved INT8 baseline, test images, and update exports under `training/data/`.
 
 ## Network simulation (`simulator/`)
 
