@@ -1,0 +1,51 @@
+# BLE 5 CODED raw PHY-like config
+--radio-profile ble5_coded_s8_raw
+--testbed testbeds/testbed_2km_200_1.csv
+--out-dir output/ble5_coded_raw_direct
+
+# Raw bitrate profiles ignore LoRa SF/BW for airtime, but the fields are still kept for metadata/window formulas.
+--sf-adv 9
+--sf-data 9
+--bw-hz 125000
+--cr-denom 5
+
+--area-m2 4000000
+--model-size-bytes 250000
+--miss-encoding bitmap
+
+--auto-data-repair-windows
+--auto-control-windows
+--reply-collision-rho 0.1
+--data-repair-window-margin 1.05
+--data-backoff-ms 0 1000
+
+--chan-adv 0
+--chan-upd 1
+--chan-data 1
+
+--until-complete
+--max-days 50
+
+# BLE Mesh-inspired advertising retransmission layer.
+# One logical simulator packet is sent as three physical copies.
+# The first copy uses the selected base channel, then the channel wraps around:
+# e.g., base 35 with 37 total channels -> 35, 36, 0.
+--phy-repetitions 3
+--phy-repeat-mode channel_hop
+--phy-repeat-channel-count 3
+--phy-repeat-gap-ms 5
+--phy-repeat-jitter-ms 0
+--phy-repeat-stages ADV UPD DATA MISS REPAIR END
+--phy-repeat-rx-scan
+
+
+# Fast fading model
+--fading rayleigh
+--rayleigh-min-db -20
+--rayleigh-max-db 20
+
+--dynamic-data-repair
+--data-inactivity-airtimes 10
+--repair-inactivity-airtimes 10
+--owner-miss-extra-airtimes 2
+--repair-chunks-per-round 0

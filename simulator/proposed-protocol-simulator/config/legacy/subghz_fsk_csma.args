@@ -1,0 +1,66 @@
+# Sub-GHz FSK raw PHY-like config
+--radio-profile subghz_fsk_raw
+--testbed testbeds/testbed_2km_100_1.csv
+--out-dir output/subghz_fsk_csma
+
+--sf-adv 9
+--sf-data 9
+--bw-hz 100000
+--cr-denom 5
+
+--area-m2 4000000
+--model-size-bytes 150000
+--miss-encoding bitmap
+
+--auto-data-repair-windows
+--auto-control-windows
+--reply-collision-rho 0.1
+--data-repair-window-margin 1.05
+--data-backoff-ms 0 1000
+
+--chan-adv 0
+--chan-upd 1
+--chan-data 1
+
+--max-days 100
+
+# Fast fading model
+--fading rayleigh
+--rayleigh-min-db -40
+--rayleigh-max-db 20
+
+--dynamic-data-repair
+--data-inactivity-airtimes 10
+--repair-inactivity-airtimes 10
+--owner-miss-extra-airtimes 2
+--repair-chunks-per-round 0
+
+# Simplified CSMA/CA-like clear-channel assessment
+--csma-ca
+--csma-stages ADV UPD DATA MISS REPAIR END
+--csma-carrier-sense-thresh-dbm -85
+--csma-busy-wait-airtime-factor 0.5
+--csma-busy-wait-jitter 0.25
+--csma-max-deferrals 0
+
+--duty-cycle-limit-s 36
+--duty-cycle-data-fraction 0.5
+--duty-cycle-include-adv-in-data
+
+--pl-sigma 3.57
+--collision-thresh-db 1
+--tx-dbm 14
+--pl-ref-m 100
+--pl-ref-loss-db 101.51
+--pl-gamma 3.0
+--num-channels 16
+--raw-bitrate-bps 50000
+--raw-max-payload-bytes 255
+--raw-sensitivity-dbm -109
+--fsk-preamble-bytes 4
+--fsk-sfd-bytes 2
+--fsk-phr-bytes 2
+--data-header-bytes 8
+--data-pl-bytes 247
+--control-window-node-factor 0.5
+--control-window-node-offset -1

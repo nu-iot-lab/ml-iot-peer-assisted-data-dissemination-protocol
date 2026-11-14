@@ -1,0 +1,65 @@
+# LoRa 2.4 GHz raw/profile-based config
+--radio-profile lora24
+--testbed testbeds/testbed_2km_200_1.csv
+--out-dir output_deluge/lora24_sf7_direct
+
+# LoRa2.4 settings
+--sf-adv 7
+--sf-data 7
+--bw-hz 812500
+--cr-denom 5
+
+# Deployment/model settings
+--area-m2 4000000
+--model-size-bytes 250000
+--miss-encoding bitmap
+
+# Deluge protocol settings
+--deluge-page-packets 48
+--deluge-req-window-ms 1000
+--deluge-req-backoff-ms 0 500
+--deluge-data-gap-ms 2
+--deluge-round-gap-ms 200
+--deluge-sender-selection recent
+--deluge-page-selection lowest
+--deluge-packet-order sequential
+--deluge-immediate-adv-on-page-complete
+
+# Deluge ADV/REQ windows
+--auto-data-repair-windows
+--auto-control-windows
+--reply-collision-rho 0.1
+--data-repair-window-margin 1.05
+--data-backoff-ms 0 1000
+
+# Channel assignment: ADV/REQ on control channel, DATA on data channels.
+--chan-adv 0
+--chan-upd 1
+--chan-data 1
+
+--max-days 100
+
+# Fast fading model
+--fading rayleigh
+--rayleigh-min-db -40
+--rayleigh-max-db 20
+
+--dynamic-data-repair
+--data-inactivity-airtimes 10
+--repair-inactivity-airtimes 10
+--owner-miss-extra-airtimes 2
+--repair-chunks-per-round 0
+
+--duty-cycle-limit-s 0
+
+--pl-sigma 3.57
+--collision-thresh-db 0
+--tx-dbm 12.5
+--pl-ref-m 100
+--pl-ref-loss-db 97.0
+--pl-gamma 3.0
+--num-channels 83
+--data-header-bytes 10
+--data-pl-bytes 245
+--control-window-node-factor 1
+--control-window-node-offset 0

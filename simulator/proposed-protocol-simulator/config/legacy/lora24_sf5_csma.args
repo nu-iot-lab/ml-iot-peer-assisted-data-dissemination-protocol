@@ -1,0 +1,66 @@
+# LoRa 2.4 GHz raw/profile-based config
+--radio-profile lora24
+--testbed testbeds/testbed_2km_200_1.csv
+--out-dir output/lora24_sf5_csma
+
+# LoRa2.4 settings
+--sf-adv 5
+--sf-data 5
+--bw-hz 812500
+--cr-denom 5
+
+# Deployment/model settings
+--area-m2 4000000
+--model-size-bytes 250000
+--miss-encoding bitmap
+
+# Auto ADV/UPD/MISS windows
+--auto-data-repair-windows
+--auto-control-windows
+--reply-collision-rho 0.1
+--data-repair-window-margin 1.05
+--data-backoff-ms 0 1000
+
+# Channel assignment: ADV on 0, UPD on 1, DATA/MISS/REPAIR on data channels.
+--chan-adv 0
+--chan-upd 1
+--chan-data 1
+
+--max-days 100
+
+# Fast fading model
+--fading rayleigh
+--rayleigh-min-db -40
+--rayleigh-max-db 20
+
+--dynamic-data-repair
+--data-inactivity-airtimes 10
+--repair-inactivity-airtimes 10
+--owner-miss-extra-airtimes 2
+--repair-chunks-per-round 0
+
+--duty-cycle-limit-s 0
+
+# LoRa CAD-CSMA clear-channel assessment
+--cad-csma
+--cad-csma-stages ADV UPD DATA MISS REPAIR END
+--cad-symbol-num 2
+--cad-detect-margin-db 0
+--cad-busy-wait-airtime-factor 0.5
+--cad-busy-wait-jitter 0.25
+--cad-max-deferrals 0
+
+--cad-control-window-node-factor 0.5
+--cad-control-window-node-offset -1.0
+
+--pl-sigma 3.57
+--collision-thresh-db 1
+--tx-dbm 12.5
+--pl-ref-m 100
+--pl-ref-loss-db 97.0
+--pl-gamma 3.0
+--num-channels 83
+--data-header-bytes 8
+--data-pl-bytes 247
+--control-window-node-factor 0.5
+--control-window-node-offset -1

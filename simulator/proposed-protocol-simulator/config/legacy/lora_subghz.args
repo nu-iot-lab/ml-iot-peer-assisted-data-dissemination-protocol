@@ -1,0 +1,27 @@
+# LoRa sub-GHz raw/profile-based config
+--radio-profile lora_subghz
+--testbed testbeds/testbed_2km_100.csv
+--out-dir output/lora_subghz_direct
+
+# Conservative LoRa sub-GHz settings. SF7 is used so a 250 kB test can finish in a reasonable phase budget.
+--sf-adv 7
+--sf-data 7
+--bw-hz 125000
+--cr-denom 5
+
+--area-m2 4000000
+--model-size-bytes 250000
+--miss-encoding bitmap
+
+--auto-data-repair-windows
+--auto-control-windows
+--reply-collision-rho 0.1
+--data-repair-window-margin 1.05
+--data-backoff-ms 0 1000
+
+--chan-adv 0
+--chan-upd 1
+--chan-data 1
+
+--until-complete
+--max-days 50

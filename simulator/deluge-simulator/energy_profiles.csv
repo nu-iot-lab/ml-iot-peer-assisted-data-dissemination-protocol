@@ -1,0 +1,6 @@
+radio_profile,tx_current_ma,rx_current_ma,voltage,notes
+lora24,24,7,3.6,Fill from your LoRa2.4 module datasheet at selected TX dBm
+ble5_coded_raw,13.6,6.4,3.6,Fill from BLE chipset/module datasheet for Coded PHY
+ble5_coded_s8_raw,13.6,6.4,3.6,
+subghz_fsk_raw,24.9,5.8,3.6,Fill from selected Sub-GHz FSK radio datasheet
+halow_raw,155,31.5,3.6,Fill from selected IEEE 802.11ah/Wi-Fi HaLow module datasheet
